@@ -52,7 +52,7 @@ streamlit run app.py
 ```
 
 On first load Streamlit will:
-1. Generate 200 physics samples (~15-30 s depending on your CPU).
+1. Generate 300 physics samples (~15-30 s depending on your CPU).
 2. Train both surrogate models.
 3. Render the dashboard with instant predictions.
 
@@ -133,3 +133,33 @@ identification at the communication level.
 physical, and operational — without waiting for a human to go looking for
 them.  That is the core value proposition for accelerating ammonia
 simulation workflows.**
+
+
+## 🧠 Mathematical Foundation
+
+The simulation is built upon the **2D Advection-Diffusion Equation**, which governs the transport of Ammonia ($NH_3$) in a fluid medium. 
+
+### 1. The Governing PDE
+The spatio-temporal evolution of the concentration $C(x, y, t)$ is defined as:
+
+$$\frac{\partial C}{\partial t} + \underbrace{\mathbf{u} \cdot \nabla C}_{\text{Advection}} = \underbrace{D_{eff} \nabla^2 C}_{\text{Diffusion}} + \underbrace{S}_{\text{Source}}$$
+
+Where:
+* $\mathbf{u} = (u_x, u_y)$: The velocity vector of the fluid flow (m/s).
+* $D_{eff}$: The effective diffusion coefficient ($m^2/s$).
+* $S$: The source term representing the ammonia release rate.
+
+
+
+### 2. Temperature Dependency (Thermodynamics)
+To fulfill the IHI requirement for "knowledge of thermodynamics," the model incorporates the temperature effect on molecular diffusivity. Based on the Chapman-Enskog theory, the diffusion coefficient is scaled as:
+
+$$D_{eff} = D_{ref} \left( \frac{T}{T_{ref}} \right)^{1.75}$$
+
+This ensures that as temperature ($T$) increases, the kinetic energy of the ammonia molecules leads to a faster spatial spread, which the Neural Surrogate is trained to capture.
+
+### 3. Numerical Scheme
+The "Ground Truth" data is generated using a **Forward-Time Central-Space (FTCS)** finite difference method. 
+- **Stability:** The timestep $\Delta t$ is dynamically constrained by the **CFL (Courant–Friedrichs–Lewy)** condition:
+  $$\Delta t \le \frac{\Delta x^2}{4D_{eff}}$$
+- **Positivity Preservation:** A ReLU-like clamp $C = \max(0, C)$ is applied to prevent numerical oscillations and maintain physical reality.
