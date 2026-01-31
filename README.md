@@ -41,10 +41,13 @@ reports via a LangChain reporting pipeline.
 ## Quick Start
 
 ```bash
-# 1.  Install dependencies
-pip install streamlit numpy scipy scikit-learn matplotlib langchain
+# 1. Creating a virtual Environment
+python -m venv venv
 
-# 2.  Run the dashboard  (from the project root)
+# 2.  Install dependencies
+pip install -r requirements.txt
+
+# 3.  Run the dashboard  (from the project root)
 streamlit run app.py
 ```
 
