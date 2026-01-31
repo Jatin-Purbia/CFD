@@ -286,7 +286,7 @@ def main():
         uy_b  = st.slider("u_y B (m/s)", -2.0,   2.0,   1.2,  step=0.1)
         Db_b  = st.slider("D₀ B (×10⁻⁵)", 1.0,  8.0,   5.0,  step=0.2)
 
-        compare_clicked = st.button("🔬 Generate Comparative Report", use_container_width=True)
+        compare_clicked = st.button("🔬 Generate Report", use_container_width=True)
 
     # ─────────────────────────────────────────────────────
     # MAIN AREA  – live prediction & visualisation
@@ -335,7 +335,7 @@ def main():
     if "report_text" not in st.session_state:
         st.session_state["report_text"] = (
             "👆  Adjust Condition B parameters in the sidebar and click\n"
-            "    '🔬 Generate Comparative Report' to produce the analysis."
+            "    '🔬 Generate Report' to produce the analysis."
         )
 
     if compare_clicked:

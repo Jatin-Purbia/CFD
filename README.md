@@ -152,7 +152,7 @@ Where:
 
 
 ### 2. Temperature Dependency (Thermodynamics)
-To fulfill the IHI requirement for "knowledge of thermodynamics," the model incorporates the temperature effect on molecular diffusivity. Based on the Chapman-Enskog theory, the diffusion coefficient is scaled as:
+The model incorporates the temperature effect on molecular diffusivity. Based on the Chapman-Enskog theory, the diffusion coefficient is scaled as:
 
 $$D_{eff} = D_{ref} \left( \frac{T}{T_{ref}} \right)^{1.75}$$
 
@@ -162,4 +162,4 @@ This ensures that as temperature ($T$) increases, the kinetic energy of the ammo
 The "Ground Truth" data is generated using a **Forward-Time Central-Space (FTCS)** finite difference method. 
 - **Stability:** The timestep $\Delta t$ is dynamically constrained by the **CFL (Courant–Friedrichs–Lewy)** condition:
   $$\Delta t \le \frac{\Delta x^2}{4D_{eff}}$$
-- **Positivity Preservation:** A ReLU-like clamp $C = \max(0, C)$ is applied to prevent numerical oscillations and maintain physical reality.
+- **Positivity Preservation:** A ReLU-like clamp $C = \max(0, C)$ is applied to prevent numerical oscillations and  maintainphysical reality.
