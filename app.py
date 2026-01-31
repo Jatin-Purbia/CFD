@@ -217,7 +217,7 @@ def main():
         st.markdown("# 🧪 Neural CFD Surrogate")
         st.markdown(
             "<span style='color:#a0a0b0; font-size:0.82rem;'>"
-            "NH₃ Advection-Diffusion · Physics-Informed AI · IHI Proof-of-Concept"
+            "NH₃ Advection-Diffusion · Physics-Informed AI"
             "</span>",
             unsafe_allow_html=True,
         )

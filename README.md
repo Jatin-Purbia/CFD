@@ -131,5 +131,5 @@ identification at the communication level.
 
 **Together, these three layers mean the system can surface problems — numerical,
 physical, and operational — without waiting for a human to go looking for
-them.  That is the core value proposition for accelerating IHI's ammonia
+them.  That is the core value proposition for accelerating ammonia
 simulation workflows.**
