@@ -1,6 +1,6 @@
 # Neural CFD Surrogate — NH₃ Advection-Diffusion
 
-> **IHI Corporation Internship PoC** · Simulation of Evaporation and Diffusion of Ammonia
+> Simulation of Evaporation and Diffusion of Ammonia
 
 A physics-grounded, AI-augmented tool that replaces expensive CFD solves with an
 instant surrogate prediction, then automatically generates structured engineering
@@ -12,18 +12,18 @@ reports via a LangChain reporting pipeline.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        Streamlit Dashboard                       │
+│                        Streamlit Dashboard                      │
 │   ┌──────────┐   ┌──────────────┐   ┌────────────────────────┐  │
-│   │  Sliders │──▶│  Surrogate   │──▶│  Reporting Layer       │  │
+│   │  Sliders │──▶│  Surrogate   │──▶│  Reporting Layer      │  │
 │   │ T, u, D  │   │  (RF + MLP)  │   │  (LangChain Template)  │  │
 │   └──────────┘   └──────┬───────┘   └────────────────────────┘  │
-│                         │                                        │
-│                  ┌──────▼───────┐                                │
-│                  │  Physics     │  ← Generates training data     │
-│                  │  Engine      │    (FTCS finite-difference)    │
-│                  │  (NumPy /    │                                │
-│                  │   SciPy)     │                                │
-│                  └──────────────┘                                │
+│                         │                                       │
+│                  ┌──────▼───────┐                               │
+│                  │  Physics     │  ← Generates training data    │
+│                  │  Engine      │    (FTCS finite-difference)   │
+│                  │  (NumPy /    │                               │
+│                  │   SciPy)     │                               │
+│                  └──────────────┘                               │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
